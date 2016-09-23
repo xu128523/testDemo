@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas基础</title>
+    <style>
+        .box{padding: 30px;text-align: center;}
+        #demo1{margin: 0 auto;border: 1px solid #ccc;}
+    </style>
+</head>
+<body>
+    <div class="box">
+       <canvas id="demo1" width="1024" height="768"></canvas>
+    </div>
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById("demo1");
+
+            //设置高宽
+            canvas.width = 1024;
+            canvas.height = 768;
+
+            //使用context绘图
+            var context = canvas.getContext("2d");
+
+            context.beginPath();
+            context.moveTo(100,100);
+            context.lineTo(700,700);
+            context.lineTo(100,700);
+            context.lineTo(100,100);
+            context.closePath();
+
+            context.lineWidth = 5;
+            context.strokeStyle = "red";
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(200,100);
+            context.lineTo(700,600);
+            context.closePath();
+
+            context.strokeStyle = "black";
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
