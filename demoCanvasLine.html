@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Canvas 绘图实例--直线</title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 0 auto;"></canvas>
+    <canvas id="canvas2" style="border: 1px solid #aaa;display: block;margin: 50px auto;"></canvas>
+    <canvas id="canvas3" style="border: 1px solid #aaa;display: block;margin: 50px auto;"></canvas>
+
+    <script>
+        window.onload = function(){
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+
+            var canvas2 = document.getElementById("canvas2");
+            var context2 = canvas2.getContext("2d");
+
+            var canvas3 = document.getElementById("canvas3");
+            var context3 = canvas3.getContext("2d");
+
+            canvas.height = 800;
+            canvas.width = 800;
+
+            canvas2.height = 800;
+            canvas2.width = 800;
+
+            canvas3.height = 800;
+            canvas3.width = 800;
+
+            //canvas
+            context.beginPath();
+            context.moveTo(100, 100);
+            context.lineTo(700, 700);
+            context.closePath();
+
+            context.strokeStyle = "#ff801a";
+            context.lineWidth = 2;
+            context.stroke();
+
+            //canvas2
+            context2.moveTo(100, 200);
+            context2.lineTo(300, 400);
+            context2.lineTo(100, 600);
+
+            context2.moveTo(300, 200);
+            context2.lineTo(500, 400);
+            context2.lineTo(300, 600);
+
+            context2.moveTo(500, 200);
+            context2.lineTo(700, 400);
+            context2.lineTo(500, 600);
+
+            context2.strokeStyle = "#ff801a";
+            context2.lineWidth = 10;
+            context2.stroke();
+
+            //canvas3
+            context3.lineWidth = 10;
+
+            context3.beginPath();
+            context3.moveTo(100, 200);
+            context3.lineTo(300, 400);
+            context3.lineTo(100, 600);
+            context3.strokeStyle = "#FFCCCC";
+            context3.stroke();
+
+            context3.beginPath();
+            context3.moveTo(300, 200);
+            context3.lineTo(500, 400);
+            context3.lineTo(300, 600);
+            context3.strokeStyle = "#CCCCFF";
+            context3.stroke();
+
+            context3.beginPath();
+            context3.moveTo(500, 200);
+            context3.lineTo(700, 400);
+            context3.lineTo(500, 600);
+            context3.strokeStyle = "#CCFFFF";
+            context3.stroke();
+        };
+    </script>
+</body>
+</html>
