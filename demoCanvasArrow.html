@@ -6,14 +6,21 @@
 </head>
 <body>
     <canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 0 auto;"></canvas>
+    <canvas id="canvas2" style="border: 1px solid #aaa;display: block;margin: 50px auto;"></canvas>
 
     <script>
         window.onload = function(){
             var canvas = document.getElementById("canvas");
             var context = canvas.getContext("2d");
 
+            var canvas2 = document.getElementById("canvas2");
+            var context2 = canvas2.getContext("2d");
+
             canvas.height = 800;
             canvas.width = 800;
+
+            canvas2.height = 800;
+            canvas2.width = 800;
 
             context.moveTo(100, 350);
             context.lineTo(500, 350);
@@ -27,6 +34,30 @@
             context.strokeStyle = "#ff801a";
             context.lineWidth = 2;
             context.stroke();
+
+            context2.beginPath();
+            context2.moveTo(100, 350);
+            context2.lineTo(500, 350);
+            context2.lineTo(500, 200);
+            context2.lineTo(700, 400);
+            context2.lineTo(500, 600);
+            context2.lineTo(500, 450);
+            context2.lineTo(100, 450);
+            context2.lineTo(100, 350);
+            context2.closePath();
+
+            //fill放在stroke前，线宽能正常显示，放在后面，会填充一半的线宽
+            context2.fillStyle = "green";
+            context2.fill();
+
+            context2.strokeStyle = "#ff801a";
+            context2.lineWidth = 10;
+            context2.stroke();
+
+            //context2.fillStyle = "green";
+            //context2.fill();
+
+
         };
     </script>
 </body>
