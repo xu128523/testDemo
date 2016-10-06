@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绘制矩形</title>
+    <style>
+        #canvas, #canvas2, #canvas3, #canvas4{
+            border: 1px solid #ccc;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+    <canvas id="canvas2"></canvas>
+    <canvas id="canvas3"></canvas>
+    <canvas id="canvas4"></canvas>
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            var canvas2 = document.getElementById("canvas2");
+            var canvas3 = document.getElementById("canvas3");
+            var canvas4 = document.getElementById("canvas4");
+
+            canvas.width = 800;
+            canvas.height = 800;
+
+            canvas2.width = 800;
+            canvas2.height = 800;
+
+            canvas3.width = 800;
+            canvas3.height = 800;
+
+            canvas4.width = 800;
+            canvas4.height = 800;
+
+            var context = canvas.getContext("2d");
+            var context2 = canvas2.getContext("2d");
+            var context3 = canvas3.getContext("2d");
+            var context4 = canvas4.getContext("2d");
+
+            drawRect(context, 100, 100, 400, 500, 10, "#0091e8", "#FF3030");
+            //rect函数绘制矩形
+            //drawRect1(context, 300, 300, 400, 400, 10, "#0091e8", "#ff9e18");
+            drawRect1(context, 300, 300, 400, 400, 10, "#0091e8", "rgba(0,256,0,.5)");
+            drawRect2(context2, 100, 100, 400, 500, 10, "#0091e8", "#FF3030");
+            drawRect3(context3, 100, 100, 400, 500, 10, "#0091e8", "#FF3030");
+            drawRect4(context4, 100, 100, 400, 500, 10, "#0091e8", "#FF3030");
+        };
+
+        function drawRect(cxt, x, y, width, height, borderWidth, borderColor, fillColor){
+            cxt.beginPath();
+            cxt.moveTo(x, y);
+            cxt.lineTo(x + width, y);
+            cxt.lineTo(x + width, y + height);
+            cxt.lineTo(x, y + height);
+            cxt.closePath();
+
+            cxt.lineWidth = borderWidth;
+            cxt.fillStyle = fillColor;
+            cxt.strokeStyle = borderColor;
+
+            cxt.fill();
+            cxt.stroke();
+        }
+
+        function drawRect1(cxt, x, y, width, height, borderWidth, borderColor, fillColor){
+            cxt.beginPath();
+            cxt.rect(x, y, width, height);
+            cxt.closePath();
+
+            cxt.lineWidth = borderWidth;
+            cxt.fillStyle = fillColor;
+            cxt.strokeStyle = borderColor;
+
+            cxt.fill();
+            cxt.stroke();
+        }
+        function drawRect2(cxt, x, y, width, height, borderWidth, borderColor, fillColor){
+            cxt.beginPath();
+            cxt.rect(x, y, width, height);
+            cxt.closePath();
+
+            cxt.lineWidth = borderWidth;
+            cxt.fillStyle = fillColor;
+            cxt.strokeStyle = borderColor;
+
+            cxt.fill();
+            cxt.stroke();
+        }
+        function drawRect3(cxt, x, y, width, height, borderWidth, borderColor, fillColor){
+
+            cxt.lineWidth = borderWidth;
+            cxt.fillStyle = fillColor;
+            cxt.strokeStyle = borderColor;
+
+            cxt.fillRect(x, y, width, height);
+        }
+        function drawRect4(cxt, x, y, width, height, borderWidth, borderColor, fillColor){
+
+            cxt.lineWidth = borderWidth;
+            cxt.fillStyle = fillColor;
+            cxt.strokeStyle = borderColor;
+
+            cxt.strokeRect(x, y, width, height);
+        }
+    </script>
+</body>
+</html>

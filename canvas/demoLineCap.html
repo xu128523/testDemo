@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>线条样式</title>
+    <style>
+        #canvas{
+            border: 1px solid #ccc;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = function (){
+            var canvas = document.getElementById("canvas");
+
+            canvas.width = 600;
+            canvas.height = 600;
+
+            var context = canvas.getContext("2d");
+
+            context.lineWidth = 50;
+            context.strokeStyle = "#f30";
+
+            context.beginPath();
+            context.moveTo(50, 100);
+            context.lineTo(50, 400);
+            //context.closePath();
+            context.lineCap = "butt";
+
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(200, 100);
+            context.lineTo(200, 400);
+            //context.closePath();
+            context.lineCap = "round";
+
+            context.stroke();
+
+
+            context.beginPath();
+            context.moveTo(350, 100);
+            context.lineTo(350, 400);
+            //context.closePath();
+            context.lineCap = "square";
+
+            context.stroke();
+
+            //baseline
+            context.lineWidth = 1;
+            context.strokeStyle = "#A4D3EE";
+            context.beginPath();
+            context.moveTo(20, 100);
+            context.lineTo(400, 100);
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(20, 400);
+            context.lineTo(400, 400);
+            context.stroke();
+
+        };
+    </script>
+</body>
+</html>
