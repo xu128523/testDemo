@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图形变换</title>
+    <style>
+        #canvas{
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext("2d");
+
+        context.fillStyle = "red";
+        context.strokeStyle = "#058";
+        context.lineWidth = 5;
+
+        ///////////////////////////
+        // a c e
+        // b d f
+        // 0 0 1
+        ///////////////////////////
+        //a, d 水平，垂直缩放
+        //b, c 水平，垂直倾斜
+        //e, f 水平，垂直位移
+
+        context.save();
+        //无变换
+        //context.transform(1, 0, 0, 1, 0, 0);
+        //e,f改变
+        //context.transform(1, 0, 0, 1, 50, 100);
+        //a,d改变
+        //context.transform(2, 0, 0, 1.5, 50, 100);
+        //b,c改变
+        context.transform(2, 0.2, 0.2, 1.5, 50, 100);
+        context.fillRect(50, 50, 300, 300);
+        context.strokeRect(50, 50, 300, 300);
+        context.restore();
+
+
+    </script>
+</body>
+</html>

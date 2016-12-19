@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绘制五角星</title>
+    <style>
+        #canvas{
+            border: 1px solid #ccc;
+            margin: 50px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = function (){
+            var canvas = document.getElementById("canvas");
+
+            canvas.width = 800;
+            canvas.height = 800;
+
+            var context = canvas.getContext("2d");
+
+            var skyStyle = context.createLinearGradient(0, 0, 0, canvas.height);
+            skyStyle.addColorStop(0.0, "black");
+            skyStyle.addColorStop(1.0, "#035");
+
+            context.fillStyle = skyStyle;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+
+            //context.lineWidth = 10;
+            //线条相交形式
+            //context.lineJoin = 'bevel';
+            for(var i = 0; i < 200; i++){
+                var R = Math.random() * 5 + 5;
+                var x = Math.random() * canvas.width;
+                var y = Math.random() * canvas.height * 0.65;
+                var a = Math.random() * 360;
+                //drawStar(context, R/2.0, R, x, y, a);
+                drawStar2(context, R, x, y, a);
+            }
+
+        };
+        /**
+         *
+         * @param cxt 绘图上下文
+         * @param r 小圆半径
+         * @param R 大圆半径
+         * @param x 偏移量
+         * @param y 偏移量
+         * @param rot 旋转角度,五角星以逆时针绘制
+         */
+        function drawStar(cxt, r, R, x, y, rot){
+
+            cxt.beginPath();
+            for(var i = 0; i < 5; i++){
+                //180*Math.PI 角度弧度，300大圆半径，400，基于(0,0)坐标，位移400，放在画布中间
+                //外圆
+                cxt.lineTo( Math.cos((18 + i*72 - rot)/180*Math.PI) * R + x,
+                        -Math.sin((18 + i*72 - rot)/180*Math.PI) * R + y);
+                //内圆
+                cxt.lineTo( Math.cos((54 + i*72 - rot)/180*Math.PI) * r + x,
+                        -Math.sin((54 + i*72 - rot)/180*Math.PI) * r + y);
+            }
+            cxt.closePath();
+
+            cxt.fillStyle = "#fb3";
+            cxt.strokeStyle = "#fd5";
+            cxt.lineWidth = 3;
+            cxt.lineJoin = "round";
+
+            cxt.fill();
+            cxt.stroke();
+        }
+
+        function drawStar2(cxt, R, x, y, rot){
+
+            cxt.save();
+            cxt.translate(x, y);
+            cxt.rotate(rot /180 * Math.PI);
+            cxt.scale(R, R);
+
+            //绘制标准五角星
+            starPath(cxt);
+
+            cxt.fillStyle = "#fb3";
+            //cxt.strokeStyle = "#fd5";
+            //cxt.lineWidth = 3;
+            //cxt.lineJoin = "round";
+
+            cxt.fill();
+            //cxt.stroke();
+
+            cxt.restore();
+
+        }
+
+        function starPath(cxt){
+            cxt.beginPath();
+            for(var i = 0; i < 5; i++){
+                //180*Math.PI 角度弧度，300大圆半径，400，基于(0,0)坐标，位移400，放在画布中间
+                //外圆
+                cxt.lineTo( Math.cos((18 + i*72)/180*Math.PI),
+                        -Math.sin((18 + i*72)/180*Math.PI));
+                //内圆
+                cxt.lineTo( Math.cos((54 + i*72)/180*Math.PI) * 0.5,
+                        -Math.sin((54 + i*72)/180*Math.PI) * 0.5 );
+            }
+            cxt.closePath();
+        }
+    </script>
+</body>
+</html>
