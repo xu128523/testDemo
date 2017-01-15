@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="http://static.apitops.com/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <link href="http://static.apitops.com/web/brokerinoa_attach/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        #uploadImageDialog input[type=range]{
+            width: 75%;
+        }
+        .webuploader-pick {
+            color: #5151F3;
+        }
+
+        .cropit-image-preview {
+            background-color: #E6E6E6;
+            background-size: cover;
+            border: 2px solid #ccc;
+            border-radius: 3px;
+            width: 300px;
+            height: 300px;
+            cursor: move;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        /* Translucent background image */
+        .cropit-image-background {
+            opacity: .2;
+        }
+
+        .image-size-label {
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .image-size-label input[type="file"] {
+            width: 200px;
+            height: 35px;
+        }
+
+        .image-size-label label {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 10px;
+        }
+
+        .image-size-label > div.zoom {
+            line-height: 35px;
+            height: 35px;
+            padding-top: 15px;
+        }
+
+        .image-size-label > div.zoom input {
+            float: left;
+        }
+
+        .image-size-label > div.zoom span {
+            float: left;
+            position: relative;
+            top: -3px;
+            color: #888;
+        }
+        /*
+     * If the slider or anything else is covered by the background image,
+     * use relative or absolute position on it
+     */
+        input.cropit-image-zoom-input {
+            position: relative;
+        }
+
+        /* Limit the background image by adding overflow: hidden */
+        #image-cropper {
+            overflow: hidden;
+        }
+
+        .picinfos {
+            line-height: 20px;
+            width: 150px;
+        }
+
+        #btnUpLoad1, #btnUpLoad2 {
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 35px;
+        }
+
+        .image-editor .cropit-image-zoom-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            height: 5px;
+            background: #ccc;
+            appearance: none;
+            border-radius: 5px;
+            outline: none;
+            margin: 0 5px;
+        }
+
+        .image-editor h1 {
+            font-size: 16px;
+            margin: 0;;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="uploadButton" class="btn btn-defualt">上传图片</button>
+
+    <script src="http://static.apitops.com/openSource/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://static.apitops.com/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script src="http://static.apitops.com/openSource/cropit/jquery.cropit.0.4.5.js"></script>
+    <script>
+        //单图上传
+        var cropcomplete = function (callback, option) {
+            var imageData = $(option.id).cropit('export');
+//            var imageData = $(option.id).cropit('export', {
+//                type: 'image/jpeg',
+//                quality: 1
+//            });
+            console.log(option);
+            var formdata = new FormData($(option.form)[0]);
+            formdata.append("data", imageData);
+//            $.ajax({
+//                url: brokerConfig + 'file-upload',
+//                type: "POST",
+//                data: formdata,
+//                processData: false,
+//                contentType: false,
+//                success: function (data) {
+//                    console.log(data);
+////                    data = JSON.parse(data);
+////                    callback && callback(data);
+//                }
+//            })
+        };
+
+        $("#uploadButton").on("click", function () {
+
+            BootstrapDialog.show({
+                id:"uploadImageDialog",
+                cssClass: "dialogStyle",
+                title: "上传图片",
+                draggable: true,
+                message: $("<div></div>").load('tpl/uploadImage.html'),
+                onshown: function(){
+                    $('#cropWindow').cropit({
+                        //imageBackground: true,
+                        imageBackgroundBorderWidth: 1,
+                        imageState: {
+                            src: 'http://static.apitops.com/openimages/tourism/images/xg_default.png'
+                        },
+                        smallImage: "allow",
+                        width: 300,
+                        height: 300
+                    });
+                },
+                buttons: [{
+                    label: '确定',
+                    cssClass: 'btn-warning',
+                    action: function(dialog) {
+                        imageData = "";
+                        cropcomplete(function (data) {
+//                            if (data.msg == "0") {
+//                                tops_message.showMsgErr(data.msgbox);
+//                                return;
+//                            }
+//                            $('#businessPic').attr('src', data.msgbox);
+//                            $(".businessImage").val(data.msgbox);
+
+                        }, { id: "#cropWindow", form: "#img_tmp_form" });
+
+                        dialog.close();
+                    }
+                }, {
+                    label: '取消',
+                    action: function(dialog) {
+                        dialog.close();
+                    }
+                }]
+            });
+        });
+    </script>
+</body>
+</html>

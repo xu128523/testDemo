@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Examples</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="" rel="stylesheet">
+	<link href="http://static.apitops.com/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <button class="btn btn-default">跳转</button>
+	
+	<script src="http://static.apitops.com/openSource/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://static.apitops.com/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script>
+    	var webResult = "http://webtopsale.apitops.com/PushResult.aspx";
+    	$("button").on("click",function(){
+    		var postData = '{"F_BrokerKid":57034,"F_BrokerCustomerKid":3,"F_Phone":"15268844415","F_PicUrl":"","F_Title":"徐","F_Sex":"先生","F_Phone2":"","F_Phone3":"","pushResult":[{"F_BuildingName":"预_卡考一号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":10,"F_TimeMin":1,"F_BuildingKid":10},{"F_BuildingName":"预_卡考二号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考三号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考四号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考五号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考五号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考五号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考五号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考五号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11},{"F_BuildingName":"预_卡考五号","F_CurrentTime":"2016-11-16 15:45:04","F_DataResult":"推客界定中","F_Message":"推客界定中","F_PushEndTime":21,"F_PushStartTime":0,"F_Status":-2,"F_TimeMin":1,"F_BuildingKid":11}]}'
+    		var tempForm = document.createElement("form");
+            document.body.appendChild(tempForm);
+            tempForm.id = "tempForm";
+            tempForm.method = "POST";
+            //tempForm.target="_blank"; //打开新页面
+            var hideInput = document.createElement("input");
+            hideInput.type = "hidden";
+            hideInput.value = postData; //后台实际取到的值
+            hideInput.name="postData"; //后台要接受这个参数来取值
+            tempForm.appendChild(hideInput);
+
+            tempForm.action = "./urlJumpResult.html";
+            tempForm.submit();
+            return;
+
+            // window.location.href = webResult + "?postData=" + postData
+    	});
+    </script>
+</body>
+</html>
