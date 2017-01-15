@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Examples Loading</title>
+	<link href="http://static.apitops.com/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+    	.loading{ width: 80px; height: 40px; margin: 0 auto; margin-top:100px; } 
+    	.loading span{ display: inline-block; width: 8px; height: 100%; border-radius: 4px; background: lightgreen; -webkit-animation: load 1s ease infinite; } 
+    	@-webkit-keyframes load{ 
+    		0%,100%{ height: 40px; background: lightgreen; } 
+    		50%{ height: 70px; margin: -15px 0; background: lightblue; } 
+    	} 
+    	.loading span:nth-child(2){ -webkit-animation-delay:0.2s; } 
+    	.loading span:nth-child(3){ -webkit-animation-delay:0.4s; } 
+    	.loading span:nth-child(4){ -webkit-animation-delay:0.6s; } 
+    	.loading span:nth-child(5){ -webkit-animation-delay:0.8s; }
+
+
+		.loading_1{ width: 150px; height: 4px; border-radius: 2px; margin: 0 auto; margin-top:100px; position: relative; background: lightgreen; -webkit-animation: changeBgColor 1.04s ease-in infinite alternate; } 
+		.loading_1 span{ display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: lightgreen; position: absolute; margin-top: -7px; margin-left:-8px; -webkit-animation: changePosition 1.04s ease-in infinite alternate; } 
+		@-webkit-keyframes changeBgColor{ 
+			0%{ background: lightgreen; } 
+			100%{ background: lightblue; } 
+		} 
+		@-webkit-keyframes changePosition{ 
+			0%{ background: lightgreen; } 
+			100%{ margin-left: 142px; background: lightblue; } 
+		}
+
+		.loading_2{ width: 150px; height: 15px; margin: 0 auto; margin-top:100px; } 
+		.loading_2 span{ display: inline-block; width: 15px; height: 100%; margin-right: 5px; border-radius: 50%; background: lightgreen; -webkit-animation: load_2 1.04s ease infinite; } 
+		.loading_2 span:last-child{ margin-right: 0px; } 
+		@-webkit-keyframes load_2{ 0%{ opacity: 1; } 100%{ opacity: 0; } } 
+		.loading_2 span:nth-child(1){ -webkit-animation-delay:0.13s; } 
+		.loading_2 span:nth-child(2){ -webkit-animation-delay:0.26s; } 
+		.loading_2 span:nth-child(3){ -webkit-animation-delay:0.39s; } 
+		.loading_2 span:nth-child(4){ -webkit-animation-delay:0.52s; } 
+		.loading_2 span:nth-child(5){ -webkit-animation-delay:0.65s; }
+
+		.loading_3{ width: 150px; height: 15px; margin: 0 auto; margin-top:100px; } 
+		.loading_3 span{ display: inline-block; width: 15px; height: 100%; margin-right: 5px; border-radius: 50%; background: lightgreen; -webkit-animation: load_3 1.04s ease infinite; } 
+		.loading_3 span:last-child{ margin-right: 0px; } 
+		@-webkit-keyframes load_3{ 0%{ opacity: 1; -webkit-transform: scale(1.3); } 100%{ opacity: 0.2; -webkit-transform: scale(.3); } } 
+		.loading_3 span:nth-child(1){ -webkit-animation-delay:0.13s; } 
+		.loading_3 span:nth-child(2){ -webkit-animation-delay:0.26s; } 
+		.loading_3 span:nth-child(3){ -webkit-animation-delay:0.39s; } 
+		.loading_3 span:nth-child(4){ -webkit-animation-delay:0.52s; } 
+		.loading_3 span:nth-child(5){ -webkit-animation-delay:0.65s; }
+
+		.loading_4{ width: 150px; height: 15px; margin: 0 auto; position: relative; margin-top:100px; } 
+		.loading_4 span{ position: absolute; width: 15px; height: 100%; border-radius: 50%; background: lightgreen; -webkit-animation: load_4 1.04s ease-in infinite alternate; } 
+		@-webkit-keyframes load_4{ 0%{ opacity: 1; -webkit-transform: translate(0px); } 100%{ opacity: 0.2; -webkit-transform: translate(150px); } } 
+		.loading_4 span:nth-child(1){ -webkit-animation-delay:0.13s; } 
+		.loading_4 span:nth-child(2){ -webkit-animation-delay:0.26s; } 
+		.loading_4 span:nth-child(3){ -webkit-animation-delay:0.39s; } 
+		.loading_4 span:nth-child(4){ -webkit-animation-delay:0.52s; } 
+		.loading_4 span:nth-child(5){ -webkit-animation-delay:0.65s; }
+
+
+		.loadEffect{ width: 100px; height: 100px; position: relative; margin: 0 auto; margin-top:100px; } 
+		.loadEffect span{ display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: lightgreen; position: absolute; -webkit-animation: load 1.04s ease infinite; } 
+		@-webkit-keyframes load{ 0%{ opacity: 1; } 100%{ opacity: 0.2; } } 
+		.loadEffect span:nth-child(1){ left: 0; top: 50%; margin-top:-8px; -webkit-animation-delay:0.13s; } 
+		.loadEffect span:nth-child(2){ left: 14px; top: 14px; -webkit-animation-delay:0.26s; } 
+		.loadEffect span:nth-child(3){ left: 50%; top: 0; margin-left: -8px; -webkit-animation-delay:0.39s; } 
+		.loadEffect span:nth-child(4){ top: 14px; right:14px; -webkit-animation-delay:0.52s; } 
+		.loadEffect span:nth-child(5){ right: 0; top: 50%; margin-top:-8px; -webkit-animation-delay:0.65s; } 
+		.loadEffect span:nth-child(6){ right: 14px; bottom:14px; -webkit-animation-delay:0.78s; } 
+		.loadEffect span:nth-child(7){ bottom: 0; left: 50%; margin-left: -8px; -webkit-animation-delay:0.91s; } 
+		.loadEffect span:nth-child(8){ bottom: 14px; left: 14px; -webkit-animation-delay:1.04s; }
+
+		.loadEffect_2{ width: 100px; height: 100px; position: relative; margin: 0 auto; margin-top:100px; } 
+		.loadEffect_2 span{ display: inline-block; width: 20px; height: 20px; border-radius: 50%; background: lightgreen; position: absolute; -webkit-animation: load_5 1.04s ease infinite; } 
+		@-webkit-keyframes load_5{ 0%{ -webkit-transform: scale(1.2); opacity: 1; } 100%{ -webkit-transform: scale(.3); opacity: 0.5; } } 
+		.loadEffect_2 span:nth-child(1){ left: 0; top: 50%; margin-top:-10px; -webkit-animation-delay:0.13s; } 
+		.loadEffect_2 span:nth-child(2){ left: 14px; top: 14px; -webkit-animation-delay:0.26s; } 
+		.loadEffect_2 span:nth-child(3){ left: 50%; top: 0; margin-left: -10px; -webkit-animation-delay:0.39s; } 
+		.loadEffect_2 span:nth-child(4){ top: 14px; right:14px; -webkit-animation-delay:0.52s; } 
+		.loadEffect_2 span:nth-child(5){ right: 0; top: 50%; margin-top:-10px; -webkit-animation-delay:0.65s; } 
+		.loadEffect_2 span:nth-child(6){ right: 14px; bottom:14px; -webkit-animation-delay:0.78s; } 
+		.loadEffect_2 span:nth-child(7){ bottom: 0; left: 50%; margin-left: -10px; -webkit-animation-delay:0.91s; } 
+		.loadEffect_2 span:nth-child(8){ bottom: 14px; left: 14px; -webkit-animation-delay:1.04s; }
+
+
+    </style>
+</head>
+<body>
+    <div class="loading">
+    	<span></span>
+     	<span></span>
+      	<span></span>
+       	<span></span> 
+       	<span></span>
+    </div>
+	<hr>
+	<div class="loading_1"> 
+		<span></span> 
+	</div>
+	<hr>
+    <div class="loading_2">
+    	<span></span>
+     	<span></span>
+      	<span></span>
+       	<span></span> 
+       	<span></span>
+    </div>
+    <hr>
+    <div class="loading_3">
+    	<span></span>
+     	<span></span>
+      	<span></span>
+       	<span></span> 
+       	<span></span>
+    </div>
+    <hr>
+    <div class="loading_4">
+    	<span></span>
+     	<span></span>
+      	<span></span>
+       	<span></span> 
+       	<span></span>
+    </div>
+    <hr>
+    <div class="loadEffect"> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+    </div>
+    <hr>
+    <div class="loadEffect_2"> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+	    <span></span> 
+    </div>
+
+	<script src="http://static.apitops.com/openSource/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://static.apitops.com/bootstrap/3.3.6/bootstrap.min.js"></script>
+</body>
+</html>
