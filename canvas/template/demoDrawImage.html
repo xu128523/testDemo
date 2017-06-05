@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Canvas Image</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 0 auto;"></canvas>
+    <canvas id="canvas1" style="border: 1px solid #aaa;display: block;margin: 0 auto;"></canvas>
+    <canvas id="canvas2" style="border: 1px solid #aaa;display: block;margin: 0 auto;"></canvas>
+
+    <script>
+    	var image = new Image();
+    	image.src = '../../images/rabbit_01.jpg';
+    	
+    	window.onload = function() {
+    		var canvas = document.getElementById('canvas');
+    		var context = canvas.getContext('2d');
+
+    		var canvas1 = document.getElementById('canvas1');
+    		var context1 = canvas1.getContext('2d');
+
+    		var canvas2 = document.getElementById('canvas2');
+    		var context2 = canvas2.getContext('2d');
+
+    		canvas.height = 400;
+            canvas.width = 400;
+
+    		canvas1.height = 400;
+            canvas1.width = 400;
+
+    		canvas2.height = 400;
+            canvas2.width = 400;
+			
+			// 阴影，一些浏览器裁切会丢失阴影
+            context.shadowBlur = 20;
+            context.shadowColor = 'rgb(0, 0, 0)';
+
+            // 平移
+            context2.translate(100, 100);
+            // 旋转45
+            context2.rotate(Math.PI/8);	
+
+			// 将图片渲染在canvas上
+    		context.drawImage(image, 0, 0);
+    		// 调整图片大小
+    		context1.drawImage(image, 0, 0, 400, 400);
+    		// 裁切图片
+    		context2.drawImage(image, 30, 30, 50, 50, 30, 30, 50, 50);
+
+    		// 像素值
+    		var imageData = context.getImageData(0, 0, 3, 3);
+    		var pixel = imageData.data;		// CanvasPixelArray
+
+    		console.log(pixel[0]);
+    		console.log(pixel[1]);
+    		console.log(pixel[2]);
+    		console.log(pixel[3]);
+    	}
+    </script>
+</body>
+</html>

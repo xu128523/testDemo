@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Canvas Image3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 0 auto;"></canvas>
+
+    <script>
+    	var image = new Image();
+    	image.src = '../../images/rabbit_01.jpg';
+    	
+    	window.onload = function() {
+    		var canvas = document.getElementById('canvas');
+    		var context = canvas.getContext('2d');
+
+    		canvas.height = 400;
+            canvas.width = 400;
+
+			// 将图片渲染在canvas上
+    		context.drawImage(image, 0, 0);
+
+    		canvas.addEventListener('click', function(e) {
+				// var canvasOffset = canvas[0];
+				// var canvasX = Math.floor(e.pageX - canvasOffset.offsetX);
+				// var canvasY = Math.floor(e.pageY - canvasOffset.offsetY);
+				var canvasOffset = e.target;
+				var canvasX = Math.floor(e.pageX - canvasOffset.offsetLeft);
+				var canvasY = Math.floor(e.pageY - canvasOffset.offsetTop);
+
+				var imageData = context.getImageData(canvasX, canvasY, 1, 1);
+				var piexl = imageData.data;
+				var piexlColor = 'rgba(' + piexl[0] + ',' + piexl[1] + ',' + piexl[2] + ',' + piexl[3] + ')';
+
+				document.getElementByTagName('body')[0].style.backgroundColor = piexlColor;
+			});
+    	}    	
+    </script>
+</body>
+</html>
